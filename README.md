@@ -26,7 +26,8 @@ Usage of server:
   -privatePort string
     	The private Port number the service will listen to (default "8090")
   -publicIP string
-    	The public IP address the service will listen to, that will be used to respond to metrics and status requests (default "127.0.0.1")
+    	The public IP address the service will listen to. Unlike "privateIP" this will be just used to respond to metrics and status requests (default "127.0.0.1")
+      Please set it to the public address as needed, for security considerations, it defaults to the local address.
   -publicPort string
     	The public Port number the service will listen to (default "8091")
   -timeoutinterval int
@@ -66,8 +67,7 @@ Usage of client:
 
 ### 1- Load XDP filter to interface <br />
 
-Load the XDP filter to a single interface
-
+Load the XDP filter to a single interface. --dstIP and --dstPort parameters can be omitted with the default configuration
 ```
 goxdp client --action=load --interfaces=eth0 --mode=skb --dstIP=127.0.0.1 --dstPort=8090
 ```
